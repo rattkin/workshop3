@@ -5,8 +5,7 @@ replicaCount: 1
 
 ingress:
   name: exprm-k8s-exprm1
-  host: <NAMESPACE>.exprm.gopay.com
-
+  host: jmuller.exprm.gopay.com
 #nodeSelector:
 #  role-app: app
 

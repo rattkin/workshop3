@@ -1,0 +1,137 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: "2025-02-25T09:52:40Z"
+  generateName: hello-7b99586464-
+  labels:
+    app: hello
+    pod-template-hash: 7b99586464
+  name: hello-7b99586464-k24cv
+  namespace: dkolar
+  ownerReferences:
+    - apiVersion: apps/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: ReplicaSet
+      name: hello-7b99586464
+      uid: b3344c8a-c08a-4476-88b9-069680e90c7d
+  resourceVersion: "164852207"
+  uid: 70da213a-03b5-4084-845e-7f964804f9b8
+spec:
+  containers:
+    - env:
+        - name: KUBERNETES_NAMESPACE
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.namespace
+        - name: KUBERNETES_POD_NAME
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.name
+        - name: KUBERNETES_NODE_NAME
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: spec.nodeName
+      image: pstast/hello-kubernetes:2.0
+      imagePullPolicy: IfNotPresent
+      name: hello
+      ports:
+        - containerPort: 8080
+          protocol: TCP
+      resources: {}
+      terminationMessagePath: /dev/termination-log
+      terminationMessagePolicy: File
+      volumeMounts:
+        - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+          name: kube-api-access-lvwk4
+          readOnly: true
+  dnsPolicy: ClusterFirst
+  enableServiceLinks: true
+  nodeName: ip-10-24-10-131.aws-exprm.gopay.com
+  preemptionPolicy: PreemptLowerPriority
+  priority: 0
+  restartPolicy: Always
+  schedulerName: default-scheduler
+  securityContext: {}
+  serviceAccount: default
+  serviceAccountName: default
+  terminationGracePeriodSeconds: 30
+  tolerations:
+    - effect: NoExecute
+      key: node.kubernetes.io/not-ready
+      operator: Exists
+      tolerationSeconds: 300
+    - effect: NoExecute
+      key: node.kubernetes.io/unreachable
+      operator: Exists
+      tolerationSeconds: 300
+  volumes:
+    - name: kube-api-access-lvwk4
+      projected:
+        defaultMode: 420
+        sources:
+          - serviceAccountToken:
+              expirationSeconds: 3607
+              path: token
+          - configMap:
+              items:
+                - key: ca.crt
+                  path: ca.crt
+              name: kube-root-ca.crt
+          - downwardAPI:
+              items:
+                - fieldRef:
+                    apiVersion: v1
+                    fieldPath: metadata.namespace
+                  path: namespace
+status:
+  conditions:
+    - lastProbeTime: null
+      lastTransitionTime: "2025-02-25T09:52:41Z"
+      status: "True"
+      type: PodReadyToStartContainers
+    - lastProbeTime: null
+      lastTransitionTime: "2025-02-25T09:52:40Z"
+      status: "True"
+      type: Initialized
+    - lastProbeTime: null
+      lastTransitionTime: "2025-02-25T09:52:41Z"
+      status: "True"
+      type: Ready
+    - lastProbeTime: null
+      lastTransitionTime: "2025-02-25T09:52:41Z"
+      status: "True"
+      type: ContainersReady
+    - lastProbeTime: null
+      lastTransitionTime: "2025-02-25T09:52:40Z"
+      status: "True"
+      type: PodScheduled
+  containerStatuses:
+    - containerID: containerd://409a053a59b1bf1fe0c59992c6dc4146798710be5e2fbfdcba7523ef775a4e24
+      image: docker.io/pstast/hello-kubernetes:1.0
+      imageID: docker.io/pstast/hello-kubernetes@sha256:e7c21070b3b5b67cf141229998fea7f0d53574fd1e7e809663c84f3e78154007
+      lastState: {}
+      name: hello
+      ready: true
+      restartCount: 0
+      started: true
+      state:
+        running:
+          startedAt: "2025-02-25T09:52:41Z"
+      volumeMounts:
+        - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+          name: kube-api-access-lvwk4
+          readOnly: true
+          recursiveReadOnly: Disabled
+  hostIP: 10.24.10.131
+  hostIPs:
+    - ip: 10.24.10.131
+  phase: Running
+  podIP: 10.24.11.136
+  podIPs:
+    - ip: 10.24.11.136
+  qosClass: BestEffort
+  startTime: "2025-02-25T09:52:40Z"
