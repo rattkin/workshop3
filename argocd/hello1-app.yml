@@ -2,12 +2,12 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: jmuller-hello1
-  namespace: jmuller
+  namespace: argocd
 spec:
   project: default
 
   source:
-    repoURL: https://github.com/rattkin/workshop3
+    repoURL: https://github.com/<LOGIN>/workshop3
     targetRevision: HEAD
     path: helm/hello
 
