@@ -7,7 +7,7 @@ spec:
   project: default
 
   source:
-    repoURL: https://github.com/<LOGIN>/workshop3
+    repoURL: https://github.com/rattkin/workshop3
     targetRevision: HEAD
     path: helm/hello
 
